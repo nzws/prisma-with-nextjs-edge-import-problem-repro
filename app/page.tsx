@@ -1,7 +1,16 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import { createPrismaClient } from "./lib/prisma";
 
-export default function Home() {
+export const runtime = "edge";
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const prisma = createPrismaClient();
+  const users = await prisma.user.findMany();
+
+  console.log(users);
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
