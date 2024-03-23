@@ -1,10 +1,16 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import { ClientComponent } from "./client-component";
+
+export const runtime = "edge";
+export const dynamic = "force-dynamic";
 
 export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
+        <ClientComponent />
+
         <p>
           Get started by editing&nbsp;
           <code className={styles.code}>app/page.tsx</code>
